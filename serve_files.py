@@ -14,7 +14,7 @@ directory = Path('.').cwd()
 files = [file for file in directory.iterdir()]
 
 content = {
-    "title_text": "Temporary File Server",
+    "title_text": "PYTHON FILE SERVER",
     "files": files
 }
 
