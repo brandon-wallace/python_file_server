@@ -16,11 +16,13 @@
     <h1>{{ title_text }}</h1>
     
     {% if files %}
-      {% for file in files %}
-        <div>
-          <a href="/{{ file.name }}" download>{{ file.name }}</a>
-        </div>
-      {% endfor %}
+      <ul>
+        {% for file in files %}
+          <li>
+            <a href="/{{ file.name }}" download>{{ file.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
     {% endif %}
     
   </body>
