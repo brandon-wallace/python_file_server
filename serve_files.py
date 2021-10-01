@@ -11,7 +11,7 @@ template = Path(script_path / "template.jinja")
 rendered_file = Path(script_path / "index.html")
 directory = Path('.').cwd()
 
-files = [file for file in directory.iterdir()]
+files = [file for file in directory.iterdir() if file.is_file()]
 
 content = {
     "title_text": "PYTHON FILE SERVER",
@@ -32,4 +32,5 @@ handler = functools.partial(http.server.SimpleHTTPRequestHandler,
                             directory=script_path)
 
 with socketserver.TCPServer(('127.0.0.1', 8000), handler) as httpd:
+    print('Serving at http://127.0.0.1 on port 8000.')
     httpd.serve_forever()
