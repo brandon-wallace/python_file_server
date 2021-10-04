@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
+import socket
 import http.server
 import socketserver
 from pathlib import Path
 import jinja2
 import functools
+
+host = socket.gethostname()
+ip_address = socket.gethostbyname(host)
 
 script_path = Path(__file__).parent.absolute()
 template = Path(script_path / "template.jinja")
@@ -31,6 +35,6 @@ with open(html_file, 'w') as html:
 handler = functools.partial(http.server.SimpleHTTPRequestHandler,
                             directory=script_path)
 
-with socketserver.TCPServer(('127.0.0.1', 8000), handler) as httpd:
-    print('Serving at http://127.0.0.1 on port 8000.')
+with socketserver.TCPServer(('0.0.0.0', 8000), handler) as httpd:
+    print(f'Serving at http://{ip_address} on port 8000.')
     httpd.serve_forever()
