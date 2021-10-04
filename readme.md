@@ -27,6 +27,8 @@ $ python3 /path/to/serve_files.py
 
 Click on the links to download files one by one.
 
+OR.
+
 Download all files at once using wget.
 
 ```
